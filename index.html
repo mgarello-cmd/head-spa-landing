@@ -680,7 +680,789 @@ footer {
 
 </style>
 </head>
+<style id="hss-m-css">
+ 
+/* ── RESET BASE MOBILE ──────────────────────────────────── */
+.m-only        { display: none; }
+.m-only-block  { display: none; }
+.m-only-flex   { display: none; }
+ 
+/* ── VARIABLES MOBILE ──────────────────────────────────── */
+@media only screen and (max-width: 768px) {
+ 
+  :root {
+    --m-bg:     #0e0e0c;
+    --m-gold:   #b8a07a;
+    --m-gold-lt:#cbb997;
+    --m-text:   #f5f0e8;
+    --m-muted:  rgba(245,240,232,.45);
+    --m-border: rgba(184,160,122,.18);
+    --m-card:   rgba(255,255,255,.04);
+  }
+ 
+  /* ── OCULTAR ELEMENTOS DESKTOP ── */
+  nav#main-nav         { display: none !important; }
+  #social-proof-float  { display: none !important; }
+ 
+  /* ── MOSTRAR ELEMENTOS MOBILE ── */
+  .m-only       { display: block; }
+  .m-only-block { display: block; }
+  .m-only-flex  { display: flex; }
+ 
+  /* ── BODY MOBILE ── */
+  body { background: var(--m-bg); }
+ 
+ 
+  /* ══ NAV MOBILE ═══════════════════════════════════════ */
+  #m-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    background: rgba(14,14,12,.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--m-border);
+    display: flex; align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+  }
+  .m-nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .m-nav-logo svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .m-nav-brand {
+    font-family: 'Jost', sans-serif;
+    font-size: .65rem; font-weight: 500;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--m-text); line-height: 1;
+  }
+  .m-nav-brand span { color: var(--m-gold); }
+  .m-nav-cta {
+    display: inline-flex; align-items: center;
+    background: var(--m-gold); color: #0e0e0c;
+    font-family: 'Jost', sans-serif;
+    font-size: .6rem; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; padding: 10px 18px;
+    border: none;
+  }
+ 
+ 
+  /* ══ HERO MOBILE ═══════════════════════════════════════ */
+  .hero { display: none !important; }
+ 
+  #m-hero {
+    background: var(--m-bg);
+    padding: 88px 20px 48px;
+    min-height: 100svh;
+    display: flex; flex-direction: column;
+    justify-content: center;
+  }
+  .m-hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: .58rem; font-weight: 500;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--m-gold);
+    background: rgba(184,160,122,.12);
+    display: inline-block;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+  .m-hero-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--m-text); margin-bottom: 14px;
+  }
+  .m-hero-h1 em { font-style: italic; color: var(--m-gold-lt); }
+  .m-hero-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: .82rem; font-weight: 300; line-height: 1.75;
+    color: var(--m-muted); margin-bottom: 28px;
+  }
+ 
+  /* CTA primario */
+  .m-hero-cta-primary {
+    display: block; width: 100%;
+    background: var(--m-gold); color: #0e0e0c;
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    text-decoration: none; text-align: center;
+    padding: 18px 20px; margin-bottom: 16px;
+  }
+ 
+  /* Bloque precio */
+  .m-price-block {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .m-price-old {
+    font-family: 'Jost', sans-serif;
+    font-size: .88rem; color: var(--m-muted);
+    text-decoration: line-through;
+  }
+  .m-price-new {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--m-text);
+  }
+  .m-price-badge {
+    font-family: 'Jost', sans-serif;
+    font-size: .55rem; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--m-gold); background: rgba(184,160,122,.12);
+    padding: 4px 10px;
+  }
+ 
+  /* ROI line */
+  .m-roi {
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; color: var(--m-muted);
+    line-height: 1.6; margin-bottom: 20px;
+  }
+  .m-roi strong { color: var(--m-gold-lt); font-weight: 500; }
+ 
+  /* Garantía */
+  .m-garantia {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--m-border);
+    background: rgba(255,255,255,.03);
+  }
+  .m-garantia-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .m-garantia-text {
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; color: var(--m-muted); line-height: 1.6;
+  }
+  .m-garantia-text strong { color: var(--m-text); font-weight: 500; }
+ 
+ 
+  /* ══ PARA QUIÉN MOBILE ═════════════════════════════════ */
+  #m-para-quien {
+    padding: 48px 20px;
+    background: var(--m-bg);
+    border-top: 1px solid var(--m-border);
+  }
+  .m-section-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: .58rem; font-weight: 500;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--m-gold); margin-bottom: 12px;
+  }
+  .m-section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-weight: 300; color: var(--m-text);
+    line-height: 1.2; margin-bottom: 24px;
+  }
+  .m-section-h2 em { font-style: italic; color: var(--m-muted); }
+  .m-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .m-chip {
+    font-family: 'Jost', sans-serif;
+    font-size: .65rem; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--m-text); background: rgba(255,255,255,.06);
+    border: 1px solid var(--m-border);
+    padding: 8px 14px;
+  }
+  .m-chip-note {
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; color: var(--m-muted); line-height: 1.7;
+    font-style: italic;
+  }
+ 
+ 
+  /* ══ QUÉ INCLUYE MOBILE ════════════════════════════════ */
+  #m-incluye {
+    padding: 48px 20px;
+    background: rgba(255,255,255,.02);
+    border-top: 1px solid var(--m-border);
+  }
+  .m-inc-list {
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--m-border);
+    overflow: hidden;
+  }
+  .m-inc-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--m-border);
+  }
+  .m-inc-item:last-child { border-bottom: none; }
+  .m-inc-icon {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem; color: var(--m-gold);
+    flex-shrink: 0; margin-top: 2px; width: 24px;
+    text-align: center;
+  }
+  .m-inc-body {}
+  .m-inc-title {
+    font-family: 'Jost', sans-serif;
+    font-size: .78rem; font-weight: 500;
+    color: var(--m-text); margin-bottom: 2px;
+  }
+  .m-inc-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: .7rem; color: var(--m-muted); line-height: 1.55;
+  }
+ 
+ 
+  /* ══ CURRICULUM MOBILE (ACORDEÓN) ══════════════════════ */
+  #m-programa {
+    padding: 48px 20px;
+    background: var(--m-bg);
+    border-top: 1px solid var(--m-border);
+  }
+  .m-mod-list {
+    border: 1px solid var(--m-border);
+    overflow: hidden; margin-bottom: 32px;
+  }
+  .m-mod-item {
+    border-bottom: 1px solid var(--m-border);
+  }
+  .m-mod-item:last-child { border-bottom: none; }
+  .m-mod-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; text-align: left;
+  }
+  .m-mod-n {
+    font-family: 'Jost', sans-serif;
+    font-size: .6rem; font-weight: 600;
+    letter-spacing: .12em; color: var(--m-gold);
+    flex-shrink: 0; width: 20px;
+  }
+  .m-mod-label {
+    font-family: 'Jost', sans-serif;
+    font-size: .76rem; font-weight: 400;
+    color: var(--m-text); flex: 1; line-height: 1.45;
+  }
+  .m-mod-badge-pill {
+    font-family: 'Jost', sans-serif;
+    font-size: .5rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--m-gold); background: rgba(184,160,122,.12);
+    padding: 3px 8px; flex-shrink: 0;
+  }
+  .m-mod-badge-pill.exclusivo {
+    background: var(--m-gold); color: #0e0e0c;
+  }
+  .m-mod-chevron {
+    font-size: .9rem; color: var(--m-gold);
+    flex-shrink: 0; transition: transform .25s;
+    font-weight: 300; margin-left: 4px;
+  }
+  .m-mod-item.open .m-mod-chevron { transform: rotate(45deg); }
+  .m-mod-desc {
+    display: none;
+    padding: 0 18px 16px 50px;
+    font-family: 'Jost', sans-serif;
+    font-size: .7rem; color: var(--m-muted); line-height: 1.7;
+  }
+  .m-mod-item.open .m-mod-desc { display: block; }
+ 
+  /* Bonus strip */
+  .m-bonus-list {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 0;
+  }
+  .m-bonus-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    background: var(--m-card);
+    border: 1px solid var(--m-border);
+  }
+  .m-bonus-num {
+    font-family: 'Jost', sans-serif;
+    font-size: .55rem; font-weight: 600;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--m-gold); flex-shrink: 0;
+  }
+  .m-bonus-txt {}
+  .m-bonus-name {
+    font-family: 'Jost', sans-serif;
+    font-size: .76rem; font-weight: 500; color: var(--m-text);
+    margin-bottom: 2px;
+  }
+  .m-bonus-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: .58rem; color: var(--m-gold); letter-spacing: .1em;
+  }
+ 
+ 
+  /* ══ TESTIMONIO MOBILE ═════════════════════════════════ */
+  #m-testimonios {
+    padding: 48px 20px;
+    background: rgba(14,14,12,1);
+    border-top: 1px solid var(--m-border);
+  }
+  .m-testi-card {
+    padding: 32px 24px;
+    background: rgba(30,30,26,1);
+    border: 1px solid var(--m-border);
+  }
+  .m-testi-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--m-gold); line-height: .8;
+    opacity: .5; margin-bottom: 16px;
+  }
+  .m-testi-text {
+    font-family: 'Playfair Display', serif;
+    font-size: .95rem; font-weight: 300;
+    font-style: italic; color: var(--m-text);
+    line-height: 1.65; margin-bottom: 20px;
+  }
+  .m-testi-hr { height: 1px; background: rgba(255,255,255,.07); margin-bottom: 16px; }
+  .m-testi-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .m-testi-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(184,160,122,.15);
+    border: 1px solid rgba(184,160,122,.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: .85rem; color: var(--m-gold);
+  }
+  .m-testi-name {
+    font-family: 'Playfair Display', serif;
+    font-size: .88rem; color: var(--m-text); display: block;
+  }
+  .m-testi-role {
+    font-family: 'Jost', sans-serif;
+    font-size: .58rem; letter-spacing: .14em;
+    text-transform: uppercase; color: rgba(245,240,232,.3);
+  }
+ 
+ 
+  /* ══ CTA FINAL MOBILE ══════════════════════════════════ */
+  #m-cta-final {
+    padding: 56px 20px 64px;
+    background: var(--m-bg);
+    border-top: 1px solid var(--m-border);
+    text-align: center;
+  }
+  .m-cta-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: .58rem; font-weight: 500;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--m-gold); margin-bottom: 14px;
+  }
+  .m-cta-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    font-weight: 300; color: var(--m-text);
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .m-cta-h2 em { font-style: italic; color: var(--m-muted); }
+  .m-cta-price-block {
+    margin: 24px 0 10px;
+  }
+  .m-cta-old {
+    font-family: 'Jost', sans-serif;
+    font-size: .82rem; color: var(--m-muted);
+    text-decoration: line-through; margin-bottom: 4px;
+  }
+  .m-cta-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 300; color: var(--m-text);
+    line-height: 1;
+  }
+  .m-cta-launch {
+    font-family: 'Jost', sans-serif;
+    font-size: .62rem; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--m-gold);
+    margin-top: 6px;
+  }
+  .m-cta-roi {
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; color: var(--m-muted);
+    line-height: 1.65; margin: 16px 0 24px;
+  }
+  .m-cta-btn {
+    display: block; width: 100%;
+    background: var(--m-gold); color: #0e0e0c;
+    font-family: 'Jost', sans-serif;
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    text-decoration: none; text-align: center;
+    padding: 20px 20px; margin-bottom: 24px;
+  }
+  .m-cta-garantia {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--m-border);
+    background: rgba(255,255,255,.03);
+    text-align: left; margin-bottom: 20px;
+  }
+  .m-cta-garantia-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .m-cta-garantia-text {
+    font-family: 'Jost', sans-serif;
+    font-size: .7rem; color: var(--m-muted); line-height: 1.6;
+  }
+  .m-cta-garantia-text strong { color: var(--m-text); font-weight: 500; }
+  .m-cta-disclaimer {
+    font-family: 'Jost', sans-serif;
+    font-size: .6rem; font-style: italic;
+    color: rgba(245,240,232,.25); line-height: 1.6;
+  }
+ 
+ 
+  /* ══ OCULTAR SECCIONES DESKTOP EN MOBILE ═══════════════ */
+  .hero,
+  section#que-es,
+  section#por-que,
+  section#latam,
+  section#para-quien,
+  section#incluye,
+  section#programa,
+  section#bonuses,
+  section#niveles,
+  section#testimonios,
+  section#faq,
+  .strip,
+  section[style*="background:var(--night)"],
+  section[style*="background: var(--night)"] {
+    display: none !important;
+  }
+ 
+} /* fin @media */
+</style>
+
+
+
+
+
+
+  
 <body>
+
+  <!-- ─── NAV MOBILE ─── -->
+<nav id="m-nav" class="m-only-flex" aria-label="Navegación">
+  <a href="#" class="m-nav-logo">
+    <!-- SVG ondas HSS -->
+    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 18 Q9 10 14 18 Q19 26 24 18 Q29 10 34 18" stroke="#b8a07a" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <path d="M4 23 Q9 15 14 23 Q19 31 24 23 Q29 15 34 23" stroke="#b8a07a" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".5"/>
+      <path d="M4 13 Q9 5 14 13 Q19 21 24 13 Q29 5 34 13" stroke="#b8a07a" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".5"/>
+    </svg>
+    <div class="m-nav-brand">Head <span>Spa</span> Systems</div>
+  </a>
+  <a href="https://go.hotmart.com/P104973725C?coupon=HEADSPA2026"
+     target="_blank" rel="noopener"
+     class="m-nav-cta"
+     onclick="fbq('track','ViewContent')">INSCRIBIRME</a>
+</nav>
+ 
+ 
+<!-- ─── HERO MOBILE ─── -->
+<section id="m-hero" class="m-only-block">
+ 
+  <div class="m-hero-eyebrow">Curso de Head Spa Online #1 en Argentina</div>
+ 
+  <h1 class="m-hero-h1">
+    Un servicio premium que tus clientes van a amar.<br>
+    <em>Certificáte como Japanese Head Spa Practitioner.</em>
+  </h1>
+ 
+  <p class="m-hero-sub">
+    La sensibilidad del ritual japonés, estructurada para que puedas ejercerlo con criterio profesional. 100% online, a tu ritmo, desde cualquier lugar de Latinoamérica.
+  </p>
+ 
+  <a href="https://go.hotmart.com/P104973725C?coupon=HEADSPA2026"
+     target="_blank" rel="noopener"
+     class="m-hero-cta-primary"
+     onclick="fbq('track','ViewContent')">
+    Inscribirme al programa →
+  </a>
+ 
+  <div class="m-price-block">
+    <span class="m-price-old">USD 297</span>
+    <span class="m-price-new">USD 180</span>
+    <span class="m-price-badge">Precio de lanzamiento</span>
+  </div>
+ 
+  <p class="m-roi">
+    Cobrá <strong>1 sesión</strong> de Head Spa y ya recuperás la inversión.
+  </p>
+ 
+  <div class="m-garantia">
+    <div class="m-garantia-icon">🛡️</div>
+    <div class="m-garantia-text">
+      <strong>Garantía 7 días.</strong> Si en los primeros 7 días no quedás conforme, te devolvemos el 100% del pago. Sin preguntas.
+    </div>
+  </div>
+ 
+</section>
+ 
+ 
+<!-- ─── PARA QUIÉN MOBILE ─── -->
+<section id="m-para-quien" class="m-only-block">
+ 
+  <div class="m-section-tag">Perfil de la alumna</div>
+  <h2 class="m-section-h2">¿Para quién<br><em>es este curso?</em></h2>
+ 
+  <div class="m-chips">
+    <span class="m-chip">Cosmetóloga</span>
+    <span class="m-chip">Peluquera</span>
+    <span class="m-chip">Esteticista</span>
+    <span class="m-chip">Dueña de gabinete</span>
+    <span class="m-chip">Profesional wellness</span>
+    <span class="m-chip">Emprendedora beauty</span>
+  </div>
+ 
+  <p class="m-chip-note">
+    No se requiere experiencia previa en Head Spa. El programa está diseñado para profesionales del sector beauty que quieren incorporar un servicio diferenciador desde cero.
+  </p>
+ 
+</section>
+ 
+ 
+<!-- ─── QUÉ INCLUYE MOBILE ─── -->
+<section id="m-incluye" class="m-only-block">
+ 
+  <div class="m-section-tag">Todo lo que recibís</div>
+  <h2 class="m-section-h2">Qué incluye<br><em>el curso</em></h2>
+ 
+  <div class="m-inc-list">
+    <div class="m-inc-item">
+      <div class="m-inc-icon">映</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Clases en video HD</div>
+        <div class="m-inc-desc">9 módulos grabados con demostraciones paso a paso, desde cualquier dispositivo.</div>
+      </div>
+    </div>
+    <div class="m-inc-item">
+      <div class="m-inc-icon">書</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Materiales descargables</div>
+        <div class="m-inc-desc">Fichas técnicas, guías de protocolo y recursos para tener a mano en tu práctica.</div>
+      </div>
+    </div>
+    <div class="m-inc-item">
+      <div class="m-inc-icon">証</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Certificado oficial IAOTH</div>
+        <div class="m-inc-desc">Certificación Japanese Head Spa Practitioner con aval internacional.</div>
+      </div>
+    </div>
+    <div class="m-inc-item">
+      <div class="m-inc-icon">間</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Comunidad profesional</div>
+        <div class="m-inc-desc">Acceso al espacio privado de alumnas certificadas.</div>
+      </div>
+    </div>
+    <div class="m-inc-item">
+      <div class="m-inc-icon">更</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Actualizaciones incluidas</div>
+        <div class="m-inc-desc">Acceso permanente con futuras actualizaciones del contenido.</div>
+      </div>
+    </div>
+    <div class="m-inc-item">
+      <div class="m-inc-icon">援</div>
+      <div class="m-inc-body">
+        <div class="m-inc-title">Soporte académico</div>
+        <div class="m-inc-desc">Consultas sobre el contenido durante todo el recorrido.</div>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+ 
+ 
+<!-- ─── CURRICULUM MOBILE ─── -->
+<section id="m-programa" class="m-only-block">
+ 
+  <div class="m-section-tag">Japanese Head Spa Practitioner</div>
+  <h2 class="m-section-h2">Qué vas<br><em>a aprender</em></h2>
+ 
+  <!-- Acordeón 9 módulos -->
+  <div class="m-mod-list" id="m-accordion">
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">01</span>
+        <span class="m-mod-label">Bienvenido/a al curso</span>
+        <span class="m-mod-badge-pill">Intro</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Introducción al programa, metodología de aprendizaje y hoja de ruta para completar la certificación en Japanese Head Spa Practitioner.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">02</span>
+        <span class="m-mod-label">Primeros Auxilios y Emergencias en el Salón</span>
+        <span class="m-mod-badge-pill">Normativo</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Protocolos de respuesta ante situaciones de emergencia en el entorno profesional. Seguridad del cliente y de la practicante en todo momento.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">03</span>
+        <span class="m-mod-label">Ciencia de la Piel y el Cabello</span>
+        <span class="m-mod-badge-pill">Teórico</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Estructura del cuero cabelludo, tipos de cabello, ciclo de crecimiento y condiciones frecuentes a identificar antes de cada tratamiento.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">04</span>
+        <span class="m-mod-label">Salud, Higiene y Seguridad en el Salón</span>
+        <span class="m-mod-badge-pill">Clínico</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Contraindicaciones absolutas y relativas, protocolos de higiene, esterilización y condiciones mínimas del espacio de trabajo profesional.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">05</span>
+        <span class="m-mod-label">El Tratamiento de Head Spa Japonés</span>
+        <span class="m-mod-badge-pill">Teórico</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Historia, filosofía y beneficios del Head Spa japonés. Qué lo diferencia de un servicio convencional y por qué es la tendencia de bienestar capilar más buscada del mundo.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">06</span>
+        <span class="m-mod-label">Preparación: Consulta y Diagnóstico</span>
+        <span class="m-mod-badge-pill">Clínico</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Cómo leer el cuero cabelludo, completar el formulario de consulta y personalizar cada tratamiento según el perfil del cliente antes de comenzar.</div>
+    </div>
+ 
+    <div class="m-mod-item" style="border-left: 2px solid #b8a07a;">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n" style="color:#b8a07a;">07</span>
+        <span class="m-mod-label">Guías Paso a Paso del Tratamiento de Head Spa Japonés</span>
+        <span class="m-mod-badge-pill exclusivo">★ Exclusivo</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Videodemostraciones del protocolo completo para <em>cabello largo y cabello corto</em>: limpieza profunda, masaje de cuero cabelludo, vapor, aplicación de activos, masaje de cuello y hombros, y finalización profesional.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">08</span>
+        <span class="m-mod-label">Cuidados Post-Tratamiento (Aftercare)</span>
+        <span class="m-mod-badge-pill">Relacional</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Protocolo de aftercare, recomendaciones personalizadas al cliente, frecuencia de tratamientos y cómo construir recurrencia desde la primera sesión.</div>
+    </div>
+ 
+    <div class="m-mod-item">
+      <button class="m-mod-btn" aria-expanded="false">
+        <span class="m-mod-n">09</span>
+        <span class="m-mod-label">Finalización del Curso y Certificación</span>
+        <span class="m-mod-badge-pill">Certificación</span>
+        <span class="m-mod-chevron">+</span>
+      </button>
+      <div class="m-mod-desc">Evaluación final, emisión del certificado oficial de Head Spa Systems y acceso a la comunidad profesional de practicantes certificadas.</div>
+    </div>
+ 
+  </div><!-- /m-mod-list -->
+ 
+  <!-- 3 Bonuses PDF -->
+  <div class="m-section-tag" style="margin-bottom:14px;">+ 3 Bonus PDF · Solo durante el lanzamiento</div>
+  <div class="m-bonus-list">
+    <div class="m-bonus-item">
+      <div class="m-bonus-num">Bonus 1</div>
+      <div class="m-bonus-txt">
+        <div class="m-bonus-name">Manual de Lanzamiento Head Spa</div>
+        <div class="m-bonus-tag">Precios · Primeros clientes · Comunicación</div>
+      </div>
+    </div>
+    <div class="m-bonus-item">
+      <div class="m-bonus-num">Bonus 2</div>
+      <div class="m-bonus-txt">
+        <div class="m-bonus-name">Guía de Equipamiento e Insumos</div>
+        <div class="m-bonus-tag">Qué comprar · Dónde conseguirlo</div>
+      </div>
+    </div>
+    <div class="m-bonus-item">
+      <div class="m-bonus-num">Bonus 3</div>
+      <div class="m-bonus-txt">
+        <div class="m-bonus-name">Guía de Proveedores por País</div>
+        <div class="m-bonus-tag">Argentina · Colombia · Paraguay · Chile</div>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+ 
+ 
+<!-- ─── TESTIMONIO MOBILE ─── -->
+<section id="m-testimonios" class="m-only-block">
+ 
+  <div class="m-section-tag" style="text-align:center; margin-bottom:20px;">Experiencias reales</div>
+ 
+  <div class="m-testi-card">
+    <div class="m-testi-quote">"</div>
+    <p class="m-testi-text">
+      Empecé con Practitioner sin experiencia previa y hoy el Head Spa es parte de mi oferta. Cuando lancen el nivel Professional me anoto sin dudarlo.
+    </p>
+    <div class="m-testi-hr"></div>
+    <div class="m-testi-author">
+      <div class="m-testi-avatar">V</div>
+      <div>
+        <span class="m-testi-name">Valentina R.</span>
+        <span class="m-testi-role">Cosmetóloga · Buenos Aires</span>
+      </div>
+    </div>
+  </div>
+ 
+</section>
+ 
+ 
+<!-- ─── CTA FINAL MOBILE ─── -->
+<section id="m-cta-final" class="m-only-block">
+ 
+  <div class="m-cta-tag">Precio de lanzamiento</div>
+  <h2 class="m-cta-h2">Empezá tu<br><em>certificación hoy.</em></h2>
+ 
+  <div class="m-cta-price-block">
+    <div class="m-cta-old">USD 297</div>
+    <div class="m-cta-price">USD 180</div>
+    <div class="m-cta-launch">Precio de lanzamiento · Acceso permanente</div>
+  </div>
+ 
+  <p class="m-cta-roi">
+    Con 1 sesión de Head Spa ya recuperás lo invertido. El resto es ganancia pura.
+  </p>
+ 
+  <a href="https://go.hotmart.com/P104973725C?coupon=HEADSPA2026"
+     target="_blank" rel="noopener"
+     class="m-cta-btn"
+     onclick="fbq('track','InitiateCheckout')">
+    Inscribirme ahora →
+  </a>
+ 
+  <div class="m-cta-garantia">
+    <div class="m-cta-garantia-icon">🛡️</div>
+    <div class="m-cta-garantia-text">
+      <strong>Garantía 7 días.</strong> Si en los primeros 7 días no quedás conforme, te devolvemos el 100% del pago. Sin preguntas.
+    </div>
+  </div>
+ 
+  <p class="m-cta-disclaimer">
+    * Basado en experiencias reales de profesionales. No prometemos ni garantizamos ingresos.
+  </p>
+ 
+</section>
 
 <!-- ─── NAVIGATION ─── -->
 <nav id="main-nav">
@@ -1846,4 +2628,38 @@ footer {
   s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
 </script>
 </body>
+  <script id="hss-m-js">
+(function () {
+  // Solo ejecutar en mobile
+  if (window.innerWidth > 768) return;
+ 
+  /* ── Acordeón módulos ── */
+  var accordion = document.getElementById('m-accordion');
+  if (!accordion) return;
+ 
+  var items = accordion.querySelectorAll('.m-mod-item');
+  items.forEach(function (item) {
+    var btn = item.querySelector('.m-mod-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      // Cerrar todos
+      items.forEach(function (i) { i.classList.remove('open'); });
+      // Abrir el clickeado si estaba cerrado
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+ 
+  /* ── Tracking scroll-to-CTA (opcional) ── */
+  var ctaBtn = document.querySelector('#m-cta-final .m-cta-btn');
+  if (ctaBtn) {
+    ctaBtn.addEventListener('click', function () {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'click', { event_category: 'CTA', event_label: 'mobile_cta_final' });
+      }
+    });
+  }
+ 
+})();
+</script>
 </html>
