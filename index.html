@@ -48,7 +48,12 @@ src="https://www.facebook.com/tr?id=1031952282802808&ev=PageView&noscript=1"
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
   
 <style>
-@media (max-width: 768px) {
+.hero { min-height: 100vh; width: 100%; display: flex !important; align-items: center; padding-top: 74px; position: relative; overflow: hidden; }
+.hero-left { display: flex !important; flex-direction: column; justify-content: center; padding: 80px 5vw; max-width: 760px; position: relative; z-index: 3; width: 100%; }
+.hero-pre, .hero-h1, .hero-sub, .hero-body, .hero-ctas, .hero-metrics { opacity: 1 !important; transform: none !important; }
+  
+  
+  @media (max-width: 768px) {
   #social-proof-float {
     display: none;
   }
