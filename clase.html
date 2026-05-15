@@ -133,6 +133,25 @@ details[open] summary{color:var(--bronze)}
 .header-inner{max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo-hss{height:36px;width:auto}
 .badge-iaoth{height:38px;width:auto}
+
+/* MODAL SYLLABUS */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;backdrop-filter:blur(4px);animation:fadeIn .3s}
+.modal-overlay.active{display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-content{background:var(--cream);color:var(--ink);max-width:700px;width:100%;max-height:85vh;overflow-y:auto;border-radius:8px;padding:40px;position:relative;animation:slideUp .3s}
+.modal-close{position:absolute;top:16px;right:16px;font-size:2rem;color:var(--ink-30);cursor:pointer;line-height:1;transition:color .2s;border:none;background:none;padding:4px 12px}
+.modal-close:hover{color:var(--ink)}
+.modal-title{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:300;color:var(--ink);margin-bottom:24px;padding-right:40px}
+.modal-module{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--ink-10)}
+.modal-module:last-child{border-bottom:none}
+.modal-module-title{font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin-bottom:8px}
+.modal-module-desc{font-size:.88rem;line-height:1.65;color:var(--ink-60)}
+.modal-footer{margin-top:32px;padding-top:24px;border-top:1px solid var(--ink-10);font-size:.78rem;color:var(--ink-60);line-height:1.7}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(max-width:600px){
+  .modal-content{padding:28px 20px;max-height:90vh}
+  .modal-title{font-size:1.2rem}
+}
 </style>
 </head>
 <body>
@@ -246,6 +265,7 @@ details[open] summary{color:var(--bronze)}
         <div class="mod-item">✓ Módulo 6: Preparación: Consulta, Diagnóstico</div>
         <div class="mod-item">✓ Módulo 7: Guías Paso a Paso del Tratamiento</div>
         <div class="mod-item">✓ Módulo 8: Cuidados Post-Tratamiento (Aftercare)</div>
+        <div class="mod-item">✓ Módulo 9: Entrega de Certificado IAOTH</div>
       </div>
       <a href="#" class="syllabus-link" id="syllabusLink">Ver detalle completo de cada módulo ↗</a>
     </div>
@@ -429,41 +449,89 @@ document.querySelectorAll("a[href*='hotmart']").forEach(a => {
 });
 
 // Syllabus modal
-document.getElementById('syllabusLink')?.addEventListener('click', function(e) {
+const modal = document.getElementById('syllabusModal');
+const syllabusLink = document.getElementById('syllabusLink');
+const modalClose = document.getElementById('modalClose');
+
+syllabusLink?.addEventListener('click', function(e) {
   e.preventDefault();
-  alert(`PROGRAMA COMPLETO - Japanese Head Spa Practitioner
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+});
 
-MÓDULO 1 — Bienvenida al curso (2 contenidos)
-Introducción al programa, certificación IAOTH y hoja de ruta.
+modalClose?.addEventListener('click', function() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+});
 
-MÓDULO 2 — Primeros Auxilios y Emergencias (8 contenidos)
-Protocolos de seguridad, reacción vasovagal, anafiláctica, atragantamiento, hemorragia, lesión ocular, RCP y DEA.
-
-MÓDULO 3 — Ciencia de la Piel y el Cabello (11 contenidos)
-Dermatología aplicada: epidermis, dermis, hipodermis, ciclo del cabello, tipos, clasificaciones, cambios patológicos y contraindicaciones.
-
-MÓDULO 4 — Salud, Higiene y Seguridad (12 contenidos)
-Entorno de trabajo, ergonomía, saneamiento, códigos de práctica, evaluación de riesgos, EPP, COSHH, seguros y licencias.
-
-MÓDULO 5 — El Tratamiento de Head Spa Japonés (7 contenidos)
-Historia, funcionamiento, beneficios, idoneidad del cliente, tiempos, precios y demostración paso a paso.
-
-MÓDULO 6 — Preparación: Consulta, Diagnóstico (6 contenidos)
-Consulta con el cliente, formulario de evaluación, contraindicaciones específicas, análisis del cuero cabelludo.
-
-MÓDULO 7 — Guías Paso a Paso (2 contenidos)
-Protocolo completo del tratamiento con demostración en video.
-
-MÓDULO 8 — Cuidados Post-Tratamiento (1 contenido)
-Recomendaciones para el cliente después del tratamiento.
-
-✓ Certificado IAOTH incluido
-✓ Liberación progresiva de contenido
-✓ Certificado disponible día 8
-✓ Acceso de por vida
-✓ Comunidad privada de alumnos`);
+modal?.addEventListener('click', function(e) {
+  if(e.target === modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 });
 </script>
+
+<!-- MODAL SYLLABUS -->
+<div class="modal-overlay" id="syllabusModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2 class="modal-title">Programa Completo — Japanese Head Spa Practitioner</h2>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 1 — Bienvenida al curso (2 contenidos)</div>
+      <div class="modal-module-desc">Introducción al programa, certificación IAOTH y hoja de ruta de implementación.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 2 — Primeros Auxilios y Emergencias (8 contenidos)</div>
+      <div class="modal-module-desc">Protocolos de seguridad, manejo de reacciones adversas y primeros auxilios básicos. Incluye: reacción vasovagal, anafiláctica, atragantamiento, hemorragia externa, lesión ocular, RCP y uso del DEA.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 3 — Ciencia de la Piel y el Cabello (11 contenidos)</div>
+      <div class="modal-module-desc">Fundamentos de dermatología aplicada: estructura de la epidermis, dermis, hipodermis, ciclo del cabello, tipos y clasificaciones, cambios patológicos y contraindicaciones.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 4 — Salud, Higiene y Seguridad (12 contenidos)</div>
+      <div class="modal-module-desc">Comprensión del entorno de trabajo, ergonomía, saneamiento, códigos de práctica, evaluación de riesgos, EPP, control de sustancias peligrosas (COSHH), seguros y licencias profesionales.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 5 — El Tratamiento de Head Spa Japonés (7 contenidos)</div>
+      <div class="modal-module-desc">Historia, funcionamiento, beneficios, idoneidad del cliente, tiempos, precios y demostración paso a paso del protocolo completo.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 6 — Preparación: Consulta, Diagnóstico (6 contenidos)</div>
+      <div class="modal-module-desc">La consulta con el cliente, formulario de evaluación, contraindicaciones específicas, análisis del cuero cabelludo y cómo identificar las condiciones del cliente.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 7 — Guías Paso a Paso del Tratamiento (2 contenidos)</div>
+      <div class="modal-module-desc">Protocolo completo del tratamiento de Head Spa Japonés con demostración en video.</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 8 — Cuidados Post-Tratamiento (1 contenido)</div>
+      <div class="modal-module-desc">Recomendaciones para el cliente después del tratamiento (aftercare).</div>
+    </div>
+    
+    <div class="modal-module">
+      <div class="modal-module-title">Módulo 9 — Entrega de Certificado IAOTH (1 contenido)</div>
+      <div class="modal-module-desc">Certificación oficial como Japanese Head Spa Practitioner acreditada por IAOTH (International Association of Therapists, Reino Unido). Disponible día 8 después de completar el programa.</div>
+    </div>
+    
+    <div class="modal-footer">
+      ✓ Certificado IAOTH incluido<br>
+      ✓ Liberación progresiva — Contenido se desbloquea gradualmente<br>
+      ✓ Certificado disponible día 8 (fuera de ventana de garantía)<br>
+      ✓ Acceso de por vida al contenido actualizado<br>
+      ✓ Comunidad privada de alumnos y graduados
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
