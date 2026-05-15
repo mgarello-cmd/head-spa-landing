@@ -405,10 +405,30 @@ h1 em {
   h1 { font-size: 1.65rem; }
   .row-2 { grid-template-columns: 1fr; gap: 12px; }
   .kanji-bg { font-size: 9rem; top: 100px; right: -10px; }
+  .site-header{padding:12px 0}
+  .header-inner{padding:0 16px;gap:12px}
+  .logo-hss{height:32px}
+  .badge-iaoth{height:28px}
 }
+
+/* HEADER */
+.site-header{background:var(--cream);border-bottom:1px solid var(--ink-10);padding:16px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.header-inner{max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo-hss{height:48px;width:auto}
+.badge-iaoth{height:38px;width:auto}
 </style>
 </head>
 <body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://headspasystems.com" style="display:block;line-height:0">
+      <img src="/logo-hss.png" alt="Head Spa Systems" class="logo-hss">
+    </a>
+    <img src="/badge-iaoth.png" alt="Acreditado por IAOTH" class="badge-iaoth">
+  </div>
+</header>
 
 <div class="container">
   <span class="kanji-bg" aria-hidden="true">頭</span>
@@ -454,7 +474,7 @@ h1 em {
 
   <!-- FORM SECTION -->
   <section class="form-intro">
-    <div class="tag">Sesión informativa</div>
+    <div class="tag">Sesión informativa gratuita</div>
     <h3>Conocé el programa <em>en 10 minutos</em></h3>
     <p>Una presentación grabada que recorre los nueve módulos, la metodología y el cronograma de la cohorte.</p>
   </section>
