@@ -258,25 +258,118 @@ body {
 
 </div>
 
-<!-- Disparar pixels al submit y redirigir al webinar -->
+<!-- Disparar pixels al submit y forzar escape del iframe al redirect -->
 <script>
-window.addEventListener('message', function(e) {
-  if (e.data && typeof e.data === 'object' && e.data.event === 'Tally.FormSubmitted') {
-    // Tracking de la encuesta completa (lead calificado)
+(function() {
+  let alreadyRedirected = false;
+
+  function doRedirect(source) {
+    if (alreadyRedirected) return;
+    alreadyRedirected = true;
+
+    console.log('[HSS] Redirect triggered via:', source);
+
+    // Disparar pixels antes de redirigir
     if (window.fbq) {
-      fbq('track', 'CompleteRegistration');
-      fbq('trackCustom', 'QualifiedLead');
+      try {
+        fbq('track', 'CompleteRegistration');
+        fbq('trackCustom', 'QualifiedLead');
+      } catch(e) { console.warn('fbq error:', e); }
     }
     if (window.gtag) {
-      gtag('event', 'survey_completed', { method: 'tally_encuesta' });
+      try {
+        gtag('event', 'survey_completed', { method: 'tally_encuesta' });
+      } catch(e) { console.warn('gtag error:', e); }
     }
 
-    // Redirigir al webinar
+    // Redirigir la pestaña completa al webinar
     setTimeout(function() {
       window.location.href = '/clase.html';
     }, 300);
   }
-});
+
+  // ESTRATEGIA 1: Detectar postMessage de Tally (todos los nombres posibles)
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+
+    let eventName = '';
+    if (typeof e.data === 'string') {
+      eventName = e.data;
+    } else if (typeof e.data === 'object') {
+      eventName = e.data.event || e.data.type || e.data.name || '';
+    }
+
+    const eventLower = String(eventName).toLowerCase();
+    if (eventLower.includes('submit') ||
+        eventLower.includes('completed') ||
+        eventLower === 'tally.formsubmitted') {
+      doRedirect('postMessage:' + eventName);
+    }
+  });
+
+  // ESTRATEGIA 2: Detectar cuando el iframe navega a la URL señal
+  // Tally va a intentar ir a /clase.html?from=tally dentro del iframe.
+  // Lo detectamos vía polling de la URL del iframe (mismo origin permite acceso)
+  function watchIframe() {
+    const iframe = document.querySelector('iframe[data-tally-src]');
+    if (!iframe) {
+      setTimeout(watchIframe, 500);
+      return;
+    }
+
+    let lastSrc = '';
+    setInterval(function() {
+      try {
+        // Esto solo funciona si el iframe está en mismo dominio,
+        // pero también captura cambios en el atributo src
+        const currentSrc = iframe.src || iframe.getAttribute('src') || '';
+        if (currentSrc !== lastSrc && currentSrc.includes('from=tally')) {
+          doRedirect('iframe-src-change');
+        }
+        lastSrc = currentSrc;
+      } catch(e) {
+        // cross-origin: ignorar silenciosamente
+      }
+    }, 600);
+  }
+
+  // ESTRATEGIA 3: Detectar cuando el iframe cambia de altura drásticamente
+  // (cuando Tally muestra pantalla post-submit o intenta navegar, la altura suele cambiar)
+  function watchHeight() {
+    const iframe = document.querySelector('iframe[data-tally-src]');
+    if (!iframe) {
+      setTimeout(watchHeight, 500);
+      return;
+    }
+
+    let maxHeight = 0;
+    let stableLowCount = 0;
+
+    setInterval(function() {
+      const h = iframe.offsetHeight;
+      if (h > maxHeight) maxHeight = h;
+
+      // Si la altura cae al menos 50% respecto al máximo registrado y se mantiene
+      if (maxHeight > 500 && h > 0 && h < maxHeight * 0.5) {
+        stableLowCount++;
+        if (stableLowCount >= 3) {
+          doRedirect('iframe-height-drop');
+        }
+      } else {
+        stableLowCount = 0;
+      }
+    }, 700);
+  }
+
+  // Iniciar observadores cuando la página termine de cargar
+  if (document.readyState === 'complete') {
+    setTimeout(function() { watchIframe(); watchHeight(); }, 2000);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(function() { watchIframe(); watchHeight(); }, 2000);
+    });
+  }
+})();
 </script>
 
 </body>
