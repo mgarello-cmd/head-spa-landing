@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://googleads.g.doubleclick.net https://www.google.com https://www.youtube.com https://s.ytimg.com; img-src * data: blob:; connect-src * https://www.clarity.ms https://*.clarity.ms; frame-src * https://www.youtube.com https://www.youtube-nocookie.com; worker-src blob:;"
+          "value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://googleads.g.doubleclick.net https://www.google.com https://www.youtube.com https://s.ytimg.com https://tally.so https://*.tally.so https://client.crisp.chat https://*.crisp.chat https://assets.mailerlite.com; img-src * data: blob:; connect-src * https://www.clarity.ms https://*.clarity.ms; frame-src * https://www.youtube.com https://www.youtube-nocookie.com https://tally.so https://*.tally.so; worker-src blob:;"
         }
       ]
     }
