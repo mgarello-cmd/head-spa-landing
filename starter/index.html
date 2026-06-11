@@ -187,12 +187,23 @@
     .nav-price .p{display:none}
     .nav-yuwa{display:none}
   }
+  /* TOPBAR escasez */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:110;background:var(--lima);color:#0A0A0A;text-align:center;padding:10px 14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;font-family:var(--grot);line-height:1.45}
+  .topbar a{color:#0A0A0A;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+  .topbar .tb-m{display:none}
+  nav{top:37px}
+  header{padding-top:217px}
+  @media(max-width:640px){.topbar .tb-d{display:none}.topbar .tb-m{display:inline}.topbar{font-size:9.5px;padding:9px 8px;letter-spacing:.05em}nav{top:31px}header{padding-top:205px}}
 </style>
 </head>
 <body>
 
 <div class="annot">&#11015; LANDING DEL STARTER (conversi&oacute;n) &mdash; enfocada SOLO en vender: precio, pasos, qu&eacute; incluye, garant&iacute;a, compra. Esta es la que conect&aacute;s a Google Ads y reels. Sin branding institucional.</div>
 
+<div class="topbar">
+  <span class="tb-d">Starter: cupos agotados &mdash; <a href="#comprar">lista de espera abierta</a> &nbsp;&middot;&nbsp; Practitioner: quedan 10 lugares &mdash; <a href="#practitioner">ver certificaci&oacute;n &rarr;</a></span>
+  <span class="tb-m">Starter agotado &middot; <a href="#practitioner">Practitioner: 10 cupos &rarr;</a></span>
+</div>
 <nav>
   <div class="nav-in">
     <div class="brand">Head Spa Systems<small>by Yuwa</small></div>
@@ -229,7 +240,7 @@
         </span>
       </a>
       <div class="hero-sub-cta">
-        <span class="hero-price">Pr&oacute;xima apertura &middot; <b>USD 60</b> &middot; cupos por lista de espera</span>
+        <span class="hero-price">Cupos agotados &middot; <b>USD 60</b> &middot; lista de espera abierta</span>
         <a href="#comprar" class="btn btn-lg">Empezar ahora</a>
       </div>
     </div>
@@ -488,7 +499,7 @@
 <!-- LISTA DE ESPERA STARTER -->
 <section id="comprar" style="border-top:1px solid var(--line);padding:90px 0;background:var(--bg2)">
   <div class="wrap" style="text-align:center">
-    <div class="eyebrow" style="color:var(--lima)">Starter &middot; Pr&oacute;xima apertura</div>
+    <div class="eyebrow" style="color:var(--lima)">Starter &middot; Cupos agotados</div>
     <h2 class="serif" style="margin-top:20px">Anotate en la <span class="it">lista de espera.</span></h2>
     <p style="color:var(--muted);font-size:16px;font-weight:300;max-width:48ch;margin:24px auto 0;line-height:1.75">El Starter abre por camadas para acompa&ntilde;ar de cerca a cada alumna. Dejanos tu mail y s&eacute; la primera en enterarte cuando se abran los cupos &mdash; los de la lista entran con prioridad y precio de lanzamiento.</p>
     <div style="margin-top:36px"><a href="#" class="btn btn-lg">Quiero mi lugar &mdash; USD 60</a></div>
