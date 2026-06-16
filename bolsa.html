@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bolsa de trabajo · Yuwa Head Spa Systems</title>
+<meta name="description" content="La bolsa de trabajo del head spa: profesionales certificados y los spas que los buscan, conectados por Yuwa." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --black:#0A0A0A;
+    --panel:#121212;
+    --field:#161616;
+    --line:#262626;
+    --lime:#C4D82E;
+    --ink:#F4F4EF;
+    --muted:#8C8C85;
+    --radius:10px;
+    --maxw:780px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--lime);letter-spacing:.5px}
+  .brand span{color:var(--ink);font-family:'Inter';font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;display:block;margin-top:-2px}
+  .nav-links{display:flex;gap:24px;font-size:13px;color:var(--muted)}
+  .nav-links a:hover{color:var(--lime)}
+
+  /* hero */
+  header.hero{padding:80px 0 48px;text-align:center}
+  .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+  h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(38px,7vw,64px);line-height:1.05;letter-spacing:-.5px}
+  h1 em{font-style:italic;color:var(--lime)}
+  .sub{max-width:520px;margin:24px auto 0;color:var(--muted);font-size:17px}
+
+  /* selector — the signature */
+  .picker{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:52px 0 0}
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 26px;
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .25s,background .25s,transform .25s;
+    color:inherit;font-family:inherit;
+  }
+  .card:hover{border-color:#3a3a3a;transform:translateY(-2px)}
+  .card.active{border-color:var(--lime);background:#14160c}
+  .card .num{font-family:'Fraunces',serif;font-size:13px;color:var(--lime);letter-spacing:1px}
+  .card h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin:14px 0 6px}
+  .card p{font-size:14px;color:var(--muted)}
+  .card .arrow{margin-top:18px;font-size:13px;color:var(--lime);opacity:0;transform:translateX(-6px);transition:.25s}
+  .card.active .arrow{opacity:1;transform:none}
+
+  /* form */
+  .formzone{margin:40px 0 0}
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:34px 30px;
+  }
+  .panel-title{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin-bottom:4px}
+  .panel-note{font-size:14px;color:var(--muted);margin-bottom:26px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .field.full{grid-column:1 / -1}
+  label{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+  input,select,textarea{
+    background:var(--field);
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--ink);
+    font-family:inherit;font-size:15px;
+    padding:12px 13px;
+    width:100%;
+    transition:border-color .2s;
+  }
+  textarea{resize:vertical;min-height:84px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--lime)}
+  select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%238C8C85' stroke-width='1.5' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px}
+
+  .submit{
+    background:var(--lime);
+    color:var(--black);
+    border:none;border-radius:8px;
+    font-family:inherit;font-weight:600;font-size:15px;
+    padding:15px 20px;width:100%;
+    cursor:pointer;margin-top:8px;
+    transition:opacity .2s,transform .1s;
+  }
+  .submit:hover{opacity:.9}
+  .submit:active{transform:scale(.99)}
+  .submit:disabled{opacity:.5;cursor:default}
+  .legal{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+
+  .hidden{display:none}
+
+  /* success */
+  .done{text-align:center;padding:46px 24px}
+  .done .check{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--lime);font-size:24px}
+  .done h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin-bottom:10px}
+  .done p{color:var(--muted);max-width:380px;margin:0 auto}
+
+  footer{border-top:1px solid var(--line);margin-top:90px;padding:30px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer a:hover{color:var(--lime)}
+
+  @media(max-width:620px){
+    .picker{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
+    header.hero{padding:54px 0 36px}
+    .nav-links{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="https://yuwalatam.com">Yuwa<span>Head Spa Systems</span></a>
+    <div class="nav-links">
+      <a href="https://headspasystems.com">Formación</a>
+      <a href="https://yuwalatam.com">Yuwa</a>
+      <a href="#form">Bolsa de trabajo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Bolsa de trabajo</div>
+    <h1>Donde el head spa<br>encuentra a su <em>gente</em>.</h1>
+    <p class="sub">Profesionales certificados de un lado, los spas que los buscan del otro. Yuwa los conecta. Elegí tu lado y sumate.</p>
+
+    <div class="picker" id="picker">
+      <button class="card" data-role="pro" type="button">
+        <div class="num">01</div>
+        <h3>Soy profesional</h3>
+        <p>Querés trabajar en head spa y que los mejores spas te encuentren.</p>
+        <div class="arrow">Sumarme a la bolsa &rarr;</div>
+      </button>
+      <button class="card" data-role="spa" type="button">
+        <div class="num">02</div>
+        <h3>Busco talento</h3>
+        <p>Tenés un spa y necesitás personal certificado en head spa japonés.</p>
+        <div class="arrow">Publicar mi búsqueda &rarr;</div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="wrap" id="form">
+  <div class="formzone hidden" id="formzone">
+    <div class="panel">
+
+      <div id="form-pro" class="hidden">
+        <div class="panel-title">Sumate a la bolsa Yuwa</div>
+        <p class="panel-note">Te avisamos cuando un spa esté buscando un perfil como el tuyo.</p>
+      </div>
+      <div id="form-spa" class="hidden">
+        <div class="panel-title">Contanos qué buscás</div>
+        <p class="panel-note">Te conectamos con profesionales certificados disponibles en tu zona.</p>
+      </div>
+
+      <form id="theform">
+        <input type="hidden" name="tipo" id="tipo" value="" />
+
+        <div class="grid">
+          <div class="field" id="f-nombre">
+            <label for="nombre">Nombre y apellido</label>
+            <input type="text" name="nombre" id="nombre" required />
+          </div>
+          <div class="field hidden" id="f-spa-nombre">
+            <label for="spa_nombre">Nombre del spa o empresa</label>
+            <input type="text" name="spa_nombre" id="spa_nombre" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" name="whatsapp" id="whatsapp" required />
+          </div>
+          <div class="field">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" name="ciudad" id="ciudad" required />
+          </div>
+          <div class="field">
+            <label for="pais">País</label>
+            <select name="pais" id="pais" required>
+              <option value="">Elegí…</option>
+              <option value="Argentina">Argentina</option>
+              <option value="México">México</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Chile">Chile</option>
+              <option value="Uruguay">Uruguay</option>
+              <option value="Perú">Perú</option>
+              <option value="España">España</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field hidden" id="f-cert">
+            <label for="certificacion">Certificación</label>
+            <select name="certificacion" id="certificacion">
+              <option value="practitioner">Practitioner IAOTH (Yuwa / HSS)</option>
+              <option value="starter">Starter (HSS)</option>
+              <option value="otra">Otra certificación</option>
+              <option value="formacion">En formación</option>
+              <option value="sin">Sin certificación todavía</option>
+            </select>
+          </div>
+          <div class="field hidden" id="f-exp">
+            <label for="experiencia">Experiencia</label>
+            <select name="experiencia" id="experiencia">
+              <option value="sin">Sin experiencia</option>
+              <option value="-1">Menos de 1 año</option>
+              <option value="1-3">1 a 3 años</option>
+              <option value="+3">Más de 3 años</option>
+            </select>
+          </div>
+
+          <div class="field hidden" id="f-busca">
+            <label for="busca">Perfil que buscás</label>
+            <select name="busca" id="busca">
+              <option value="practitioner">Head spa practitioner</option>
+              <option value="manager">Head spa manager</option>
+              <option value="recepcion">Recepción / asistente</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="modalidad">Modalidad</label>
+            <select name="modalidad" id="modalidad">
+              <option value="full">Full-time</option>
+              <option value="part">Part-time</option>
+              <option value="freelance">Freelance</option>
+              <option value="conv">A convenir</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="mensaje">Mensaje (opcional)</label>
+            <textarea name="mensaje" id="mensaje"></textarea>
+          </div>
+        </div>
+
+        <button class="submit" type="submit" id="btn">Enviar</button>
+        <p class="legal">Al enviar aceptás que Yuwa use estos datos para conectarte. No los compartimos con terceros.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="formzone hidden" id="successzone">
+    <div class="panel done">
+      <div class="check">&#10003;</div>
+      <h2 id="done-title">Listo, quedaste anotado.</h2>
+      <p id="done-msg">Recibimos tus datos. Cuando haya un match te escribimos por WhatsApp o email.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Yuwa · Head Spa Systems &nbsp;·&nbsp;
+    <a href="https://yuwalatam.com">yuwalatam.com</a> &nbsp;·&nbsp;
+    <a href="https://headspasystems.com">headspasystems.com</a>
+  </div>
+</footer>
+
+<script>
+  /* ====== Los envíos llegan directo a este mail. Cambiá la dirección si querés otra. ====== */
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/info@headspasystems.com";
+  /* ===================================================================================== */
+
+  const picker = document.getElementById('picker');
+  const cards = picker.querySelectorAll('.card');
+  const formzone = document.getElementById('formzone');
+  const tipoInput = document.getElementById('tipo');
+  const proHead = document.getElementById('form-pro');
+  const spaHead = document.getElementById('form-spa');
+
+  const proOnly = ['f-cert'];
+  const spaOnly = ['f-spa-nombre','f-busca'];
+  const common  = ['f-exp'];
+  const show = id => document.getElementById(id).classList.remove('hidden');
+  const hide = id => document.getElementById(id).classList.add('hidden');
+  const setLabel = (id,txt) => document.getElementById(id).querySelector('label').textContent = txt;
+
+  function selectRole(role){
+    cards.forEach(c => c.classList.toggle('active', c.dataset.role === role));
+    tipoInput.value = role === 'pro' ? 'Profesional' : 'Spa';
+
+    if(role === 'pro'){
+      proHead.classList.remove('hidden'); spaHead.classList.add('hidden');
+      proOnly.forEach(show); spaOnly.forEach(hide);
+      setLabel('f-nombre','Nombre y apellido');
+      setLabel('f-exp','Experiencia');
+    } else {
+      spaHead.classList.remove('hidden'); proHead.classList.add('hidden');
+      spaOnly.forEach(show); proOnly.forEach(hide);
+      setLabel('f-nombre','Nombre del contacto');
+      setLabel('f-exp','Experiencia requerida');
+    }
+    common.forEach(show);
+    formzone.classList.remove('hidden');
+    formzone.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  cards.forEach(c => c.addEventListener('click', () => selectRole(c.dataset.role)));
+
+  document.getElementById('theform').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('btn');
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    if(!data.tipo){ alert('Elegí si sos profesional o spa.'); return; }
+    data._subject = 'Bolsa de trabajo Yuwa · nueva alta (' + data.tipo + ')';
+    data._captcha = 'false';
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    try{
+      const res = await fetch(FORM_ENDPOINT, {
+        method:'POST',
+        headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      if(!res.ok) throw new Error('fail');
+      if(window.fbq) fbq('track','Lead',{content_name:'bolsa_'+data.tipo});
+      if(window.gtag) gtag('event','generate_lead',{tipo:data.tipo});
+      formzone.classList.add('hidden');
+      const ok = document.getElementById('successzone');
+      if(data.tipo === 'Spa'){
+        document.getElementById('done-title').textContent = 'Búsqueda recibida.';
+        document.getElementById('done-msg').textContent = 'Te conectamos con profesionales disponibles en tu zona. Te escribimos pronto.';
+      }
+      ok.classList.remove('hidden');
+      ok.scrollIntoView({behavior:'smooth', block:'start'});
+    }catch(err){
+      btn.disabled = false; btn.textContent = 'Enviar';
+      alert('No pudimos enviar el formulario. Probá de nuevo o escribinos por WhatsApp.');
+    }
+  });
+</script>
+
+<!-- ====== Meta Pixel ====== -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1031952282802808');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1031952282802808&ev=PageView&noscript=1"/></noscript>
+
+<!-- ====== GA4 ====== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q689JZ7ESY"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());gtag('config','G-Q689JZ7ESY');
+</script>
+
+</body>
+</html>
